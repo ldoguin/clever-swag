@@ -2,9 +2,9 @@ node {
     def server
     def buildInfo
     def rtMaven
- 
-    stage ('Checkout') {
-       checkout scm
+    
+    stage ('Build') {
+        git url: 'https://github.com/ldoguin/clever-swag.git'
     }
  
     stage ('Artifactory configuration') {
@@ -23,6 +23,20 @@ node {
  
     stage ('Publish build info') {
         server.publishBuildInfo buildInfo
+    }
+
+    stage ('Publish Static Doc') {
+        withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'ldoguinGithub',
+                usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+            git url: "https://$USERNAME:$PASSWORD@github.com/ldoguin/api-doc",
+            branch: 'master'
+            sh 'cp html_site/index.html .'
+            sh 'git config --global user.email "jenkins@clever-cloud.com"'
+            sh 'git config --global user.name "Jenkins Bot"'
+            sh 'git add index.html'
+            sh 'git commit -m"update documentation"'
+            sh 'git push origin master'
+        }  
     }
 }
 
