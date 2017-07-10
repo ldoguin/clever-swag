@@ -1,0 +1,6674 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Public API for managing Clever-Cloud data and products",
+    "version" : "1.0.0",
+    "title" : "Clever-Cloud API",
+    "contact" : { }
+  },
+  "host" : "api.clever-cloud.com",
+  "basePath" : "/v2",
+  "schemes" : [ "https" ],
+  "security" : [ {
+    "OAuthSecurity" : [ ]
+  } ],
+  "paths" : {
+    "/application/{appId}/environment" : {
+      "get" : {
+        "parameters" : [ {
+          "name" : "token",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      },
+      "put" : {
+        "parameters" : [ {
+          "name" : "token",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/authorize" : {
+      "post" : {
+        "tags" : [ "Default" ],
+        "description" : "Handled by our API.",
+        "operationId" : "postAuthorize",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "authorize"
+          }
+        }
+      }
+    },
+    "/github" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getGithub",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "startGithub",
+            "schema" : {
+              "$ref" : "#/definitions/Transaction Id"
+            }
+          }
+        }
+      }
+    },
+    "/github/applications" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getGithubApplications",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getGithubApplications",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Application"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/github/callback" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getGithubCallback",
+        "parameters" : [ {
+          "name" : "code",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "state",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "error",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "error_description",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "error_uri",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "Cookie",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "githubCallback"
+          }
+        }
+      }
+    },
+    "/github/emails" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getGithubEmails",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getGithubEmails",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/github/keys" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getGithubKeys",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getGithubKeys",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Key"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/github/link" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getGithubLink",
+        "parameters" : [ {
+          "name" : "transactionId",
+          "in" : "query",
+          "required" : false,
+          "type" : "string",
+          "description" : "From GET /github"
+        }, {
+          "name" : "redirectUrl",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "linkGithub"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteGithubLink",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "unlinkGithub"
+          }
+        }
+      }
+    },
+    "/github/login" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getGithubLogin",
+        "parameters" : [ {
+          "name" : "redirectUrl",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fromAuthorize",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "githubLogin"
+          }
+        }
+      }
+    },
+    "/github/redeploy" : {
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postGithubRedeploy",
+        "parameters" : [ {
+          "name" : "User-Agent",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "X-Github-Event",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "X-Hub-Signature",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "redeployApp"
+          }
+        }
+      }
+    },
+    "/github/signup" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getGithubSignup",
+        "parameters" : [ {
+          "name" : "redirectUrl",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "fromAuthorize",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "githubSignup"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postGithubSignup",
+        "parameters" : [ {
+          "name" : "transactionId",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "name",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "otherId",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "otherEmail",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "password",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "autoLink",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "terms",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "finsihGithubSignup"
+          }
+        }
+      }
+    },
+    "/github/username" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getGithubUsername",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getGithubUsername",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/newsfeeds/blog" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getNewsfeedsBlog",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getBlogFeed"
+          }
+        }
+      }
+    },
+    "/newsfeeds/engineering" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getNewsfeedEngineering",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getEngineeringFeed"
+          }
+        }
+      }
+    },
+    "/oauth/access_token" : {
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postOauthAccessToken",
+        "parameters" : [ {
+          "name" : "oauth_consumer_key",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_token",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_signature_method",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_signature",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_timestamp",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_nonce",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_version",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_verifier",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_callback",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_token_secret",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_callback_confirmed",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "postAccessTokenRequest"
+          }
+        }
+      }
+    },
+    "/oauth/access_token_query" : {
+      "post" : {
+        "parameters" : [ {
+          "name" : "oauth_consumer_key",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_token",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_signature_method",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_signature",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_timestamp",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_nonce",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_version",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_verifier",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_callback",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_token_secret",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_callback_confirmed",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/oauth/authorize" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOauthAuthorize",
+        "parameters" : [ {
+          "name" : "oauth_token",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "Cookie",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "authorizeForm"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postOauthAuthorize",
+        "parameters" : [ {
+          "name" : "almighty",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "access_organisations",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "manage_organisations",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "manage_organisations_services",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "manage_organisations_applications",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "manage_organisations_members",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "access_organisations_bills",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "access_organisations_credit_count",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "access_organisations_consumption_statistics",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "access_personal_information",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "manage_personal_information",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "manage_ssh_keys",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "manage_services",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "manage_applications",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "access_bills",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "access_credit_count",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "access_consumption_statistics",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "Cookie",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "authorizeToken"
+          }
+        }
+      }
+    },
+    "/oauth/request_token" : {
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postOauthRequestToken",
+        "parameters" : [ {
+          "name" : "oauth_consumer_key",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_token",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_signature_method",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_signature",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_timestamp",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_nonce",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_version",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_verifier",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_callback",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_token_secret",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_callback_confirmed",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "postReqTokenRequest"
+          }
+        }
+      }
+    },
+    "/oauth/request_token_query" : {
+      "post" : {
+        "parameters" : [ {
+          "name" : "oauth_consumer_key",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_token",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_signature_method",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_signature",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_timestamp",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_nonce",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_version",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_verifier",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_callback",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_token_secret",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "oauth_callback_confirmed",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/oauth/rights" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOauthRights",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getAvailableRights",
+            "schema" : {
+              "$ref" : "#/definitions/Rights"
+            }
+          }
+        }
+      }
+    },
+    "/organisations" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisations",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "user",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "getUserOrganisations",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Organisation"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postOrganisations",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeOrganisation"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "createOrganisation"
+          }
+        }
+      }
+    },
+    "/organisations/{id}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsId",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getOrganisation",
+            "schema" : {
+              "$ref" : "#/definitions/Organisation"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsId",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeOrganisation"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "editOrganisation"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsId",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deleteOrganisation"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/addonproviders" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdAddonproviders",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Get all informations about all providers.",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Provider"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postOrganisationsIdAddonproviders",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeAddonProvider"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "createProvider"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/addonproviders/{providerId}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdAddonprovidersProviderId",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Get all informations about given provider.",
+            "schema" : {
+              "$ref" : "#/definitions/Provider"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsIdAddonprovidersProviderId",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeAddonProvider"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "updateProviderInfos"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "providerId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/addonproviders/{providerId}/features" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdAddonprovidersProviderIdFeatures",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getProviderFeatures",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Feature"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postOrganisationsIdAddonprovidersProviderIdFeatures",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeFeature"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "addProviderFeature"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "providerId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/addonproviders/{providerId}/features/{featureId}" : {
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsIdAddonprovidersProviderIdFeaturesFeatureId",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deleteProviderFeature"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "featureId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "providerId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/addonproviders/{providerId}/plans" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdAddonprovidersProviderIdPlans",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getProviderPlans",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Plan"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postOrganisationsIdAddonprovidersProviderIdPlans",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabePlan"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "addProviderPlan"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "providerId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/addonproviders/{providerId}/plans/{planId}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdAddonprovidersProviderIdPlansPlanId",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getProviderPlan",
+            "schema" : {
+              "$ref" : "#/definitions/Plan"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsIdAddonprovidersProviderIdPlansPlanId",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabePlan"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "editProviderPlan"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsIdAddonprovidersProviderIdPlansPlanId",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deleteProviderPlan"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "providerId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "planId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/addonproviders/{providerId}/plans/{planId}/features/{featureName}" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsIdAddonprovidersProviderIdPlansPlanIdFeaturesFeatureName",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabePlanFeature"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "editProviderPlanFeature"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsIdAddonprovidersProviderIdPlansPlanIdFeaturesFeatureName",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deleteProviderPlanFeature"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "featureName",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "providerId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "planId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/addonproviders/{providerId}/tags" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdAddonprovidersProviderIdTags",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getProviderTags",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "providerId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/addonproviders/{providerId}/testers" : {
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postOrganisationsIdAddonprovidersProviderIdTesters",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "addBetaTester"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "providerId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/addons" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdAddons",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getAddons",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Addon"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postOrganisationsIdAddons",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeAddon"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "provisionAddon"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/addons/{addonId}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdAddonsAddonId",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getAddon",
+            "schema" : {
+              "$ref" : "#/definitions/Addon"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsIdAddonsAddonId",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeAddon"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Update addon information"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsIdAddonsAddonId",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deprovisionAddon"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/addons/{addonId}/applications" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdAddonsAddonIdApplications",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplicationsLinkedToAddon",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Application"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/addons/{addonId}/env" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdAddonsAddonIdEnv",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getAddonEnv",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ListEnv"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/addons/{addonId}/payment-method" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsIdAddonsAddonIdPaymentMethod",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "changePaymentMethod"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/addons/{addonId}/plan" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsIdAddonsAddonIdPlan",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabePlan"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Update plan of an add-on."
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/addons/{addonId}/sso" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdAddonsAddonIdSso",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getSSOData",
+            "schema" : {
+              "$ref" : "#/definitions/Sso"
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/addons/{addonId}/tags" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdAddonsAddonIdTags",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getAddonTags",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/addons/{addonId}/tags/{tag}" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsIdAddonsAddonIdTagsTag",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Body"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "addAddonTag"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsIdAddonsAddonIdTagsTag",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deleteAddonTag"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "tag",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdApplications",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getAllApplications",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Application"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postOrganisationsIdApplications",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeApplication"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "addApplication"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdApplicationsAppId",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplication",
+            "schema" : {
+              "$ref" : "#/definitions/Application"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsIdApplicationsAppId",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeApplication"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "editApplication"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsIdApplicationsAppId",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deleteApplication"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/addons" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdApplicationsAppIdAddons",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getAddonsLinkedToApplication",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Addon"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postOrganisationsIdApplicationsAppIdAddons",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Body"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "linkAddonToApplication"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/addons/env" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdApplicationsAppIdAddonsEnv",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getEnvOfAddonsLinkedToApplication",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Env"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/addons/{addonId}" : {
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsIdApplicationsAppIdAddonsAddonId",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "unlinkAddonFromApplication"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/branch" : {
+      "put" : {
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/branches" : {
+      "get" : {
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/dependencies" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdApplicationsAppIdDependencies",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplicationDependencies",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Application"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/dependencies/{dependencyId}" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsIdApplicationsAppIdDependenciesDependencyId",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Body"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "addApplicationDependency"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsIdApplicationsAppIdDependenciesDependencyId",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deleteApplicationDependency"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "dependencyId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/dependents" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdApplicationsAppIdDependents",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplicationDependents",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Application"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/deployments" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdApplicationsAppIdDeployments",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "action",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplicationDeploymentsForOrga",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Deployment"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/deployments/{deploymentId}/instances" : {
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsIdApplicationsAppIdDeploymentsDeploymentIdInstances",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplicationDeploymentsForOrga"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "deploymentId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/env" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdApplicationsAppIdEnv",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplicationEnv",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ListEnv"
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsIdApplicationsAppIdEnv",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeEnv"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "editApplicationEnvironment"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/env/{envName}" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsIdApplicationsAppIdEnvEnvName",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeEnv"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "editApplicationEnv"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsIdApplicationsAppIdEnvEnvName",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "removeApplicationEnv"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "envName",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/exposed_env" : {
+      "get" : {
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      },
+      "put" : {
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/instances" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdApplicationsAppIdInstances",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplicationInstances",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/AppInstance"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postOrganisationsIdApplicationsAppIdInstances",
+        "parameters" : [ {
+          "name" : "commit",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "redeployApplication"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsIdApplicationsAppIdInstances",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "undeployApplication"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/tags" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdApplicationsAppIdTags",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplicationTags",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/tags/{tag}" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsIdApplicationsAppIdTagsTag",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Body"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "addApplicationTag"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsIdApplicationsAppIdTagsTag",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deleteApplicationTag"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "tag",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/vhosts" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdApplicationsAppIdVhosts",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getVhosts",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Vhost"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/vhosts/favourite" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdApplicationsAppIdVhostsFavourite",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getFavouriteVhost",
+            "schema" : {
+              "$ref" : "#/definitions/Vhost"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsIdApplicationsAppIdVhostsFavourite",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Vhost"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "markFavouriteVhost"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsIdApplicationsAppIdVhostsFavourite",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "unmarkFavouriteVhost"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/applications/{appId}/vhosts/{domain}" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsIdApplicationsAppIdVhostsDomain",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Vhost"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "addVhost"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsIdApplicationsAppIdVhostsDomain",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "removeVhost"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "domain",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/avatar" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "description" : "If you want to upload an image from your computer, send the image in the body of the request without anything else.",
+        "operationId" : "putOrganisationsIdAvatar",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "setOrgaAvatar\nsetOrgaAvatarFromSource"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/consumers" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdConsumers",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getConsumers",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Consumer"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postOrganisationsIdConsumers",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeConsumer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "createConsumer"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/consumers/{key}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdConsumersKey",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getConsumer",
+            "schema" : {
+              "$ref" : "#/definitions/Consumer"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsIdConsumersKey",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeConsumer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "PUT the same data as in POST."
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsIdConsumersKey",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deleteConsumer"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "key",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/consumers/{key}/secret" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdConsumersKeySecret",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getConsumerSecret",
+            "schema" : {
+              "$ref" : "#/definitions/Secret"
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "key",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/consumptions" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdConsumptions",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "appId",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "from",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "to",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "getAmount",
+            "schema" : {
+              "$ref" : "#/definitions/Conso"
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/credits" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdCredits",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getAmount",
+            "schema" : {
+              "$ref" : "#/definitions/Credits"
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/instances" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdInstances",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getInstancesForAllApps",
+            "schema" : {
+              "type" : "object"
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/members" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdMembers",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getOrganisationMembers",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Member"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postOrganisationsIdMembers",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "invitationKey",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeMember"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "addOrganisationMember"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/members/{userId}" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsIdMembersUserId",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeMember"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "editOrganisationMember"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsIdMembersUserId",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "removeOrganisationMember"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "userId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/payment-info" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdPaymentInfo",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getPaymentInfo"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/payments/billings" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdPaymentsBillings",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getInvoices"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postOrganisationsIdPaymentsBillings",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "buyDrops"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/payments/billings/{bid}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdPaymentsBillingsBid",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getInvoice"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsIdPaymentsBillingsBid",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "choosePaymentProvider"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsIdPaymentsBillingsBid",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deletePurchaseOrder"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "bid",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/payments/billings/{bid}.pdf" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdPaymentsBillingsBidPdf",
+        "parameters" : [ {
+          "name" : "token",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "getPdfInvoice"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "bid",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/payments/fullprice/{price}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdPaymentsFullPricePrice",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "priceWithTax"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "price",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/organisations/{id}/payments/recurring" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getOrganisationsIdPaymentsRecurring",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getRecurrentPayment"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putOrganisationsIdPaymentsRecurring",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "createRecurrentPayment"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteOrganisationsIdPaymentsRecurring",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deleteRecurrentPayment"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/password_forgotten" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getPasswordForgotten",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getPasswordForgottenForm"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postPasswordForgotten",
+        "parameters" : [ {
+          "name" : "login",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "drop_tokens",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "TesterPass",
+          "in" : "header",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "askForPasswordResetViaForm"
+          }
+        }
+      }
+    },
+    "/password_forgotten/{key}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getPasswordForgottenKey",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "confirmPasswordResetRequest"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postPasswordForgottenKey",
+        "parameters" : [ {
+          "name" : "pass",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "pass2",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "resetPasswordForgotten"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "key",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/payments/coupons/{name}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getPaymentsCouponsName",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getCoupon"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "name",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/payments/providers" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getPaymentsProviders",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getAvailablePaymentProviders",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Payment Provider"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/payments/tokens/bt" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getPaymentsTokensBt",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getBraintreeToken"
+          }
+        }
+      }
+    },
+    "/payments/webhooks/bt" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getPaymentsWebhooksBt",
+        "parameters" : [ {
+          "name" : "bt_challenge",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "subscriptionEventPing"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postPaymentsWebhooksBt",
+        "parameters" : [ {
+          "name" : "bt_signature",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "bt_payload",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "subscriptionEvent"
+          }
+        }
+      }
+    },
+    "/payments/{bid}/end/bt" : {
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postPaymentsBidEndBt",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "endPaymentWithBraintree"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "bid",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/products/addonproviders" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getProductsAddonProviders",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getAddonProviders",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Provider"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/addonproviders/{provider_id}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getProductsAddonProvidersProviderId",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getAddonProvider",
+            "schema" : {
+              "$ref" : "#/definitions/Provider"
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "provider_id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/products/countries" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getProductsCountries",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getCountries",
+            "schema" : {
+              "$ref" : "#/definitions/Country"
+            }
+          }
+        }
+      }
+    },
+    "/products/countrycodes" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getProductsCountrycodes",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getCountryCodes",
+            "schema" : {
+              "$ref" : "#/definitions/Country"
+            }
+          }
+        }
+      }
+    },
+    "/products/instances" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getProductsInstances",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "for",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "getAvailableInstances",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Instance"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/instances/{type}-{version}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getProductsInstancesTypeVersion",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "for",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "app",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "getAvailableInstance",
+            "schema" : {
+              "$ref" : "#/definitions/Instance"
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "type",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "version",
+        "in" : "path",
+        "required" : true,
+        "type" : "integer",
+        "format" : "int32"
+      } ]
+    },
+    "/products/mfa_kinds" : {
+      "get" : {
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      }
+    },
+    "/products/packages" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getProductsPackages",
+        "parameters" : [ {
+          "name" : "coupon",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "orgaId",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "currency",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "getAvailablePackages"
+          }
+        }
+      }
+    },
+    "/products/prices" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getProductsPrices",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getExchangeRates"
+          }
+        }
+      }
+    },
+    "/products/zones" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getProductsZones",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getZones",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Zone"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/self" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "summary" : "",
+        "description" : "Get information about yourself",
+        "operationId" : "getSelf",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getUser",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putSelf",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeUser"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "editUser"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelf",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deleteUser"
+          }
+        }
+      }
+    },
+    "/self/addons" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "summary" : "Addon",
+        "description" : "Get all the addons",
+        "operationId" : "getSelfAddons",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getAddons",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Addon"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postSelfAddons",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeAddon"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "provisionAddon"
+          }
+        }
+      }
+    },
+    "/self/addons/{addonId}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "summary" : "Specific addon",
+        "description" : "Get a specific addon",
+        "operationId" : "getSelfAddonsAddonId",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getAddon",
+            "schema" : {
+              "$ref" : "#/definitions/Addon"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putSelfAddonsAddonId",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeAddon"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Update addon informations"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfAddonsAddonId",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deprovisionAddon"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/addons/{addonId}/applications" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfAddonsAddonIdApplications",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplicationsLinkedToAddon",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Application"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/addons/{addonId}/env" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfAddonsAddonIdEnv",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getAddonEnv",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ListEnv"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/addons/{addonId}/payment-method" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putSelfAddonsAddonIdPaymentMethod",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "changePaymentMethod"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/addons/{addonId}/plan" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putSelfAddonsAddonIdPlan",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabePlan"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Update plan of an add-on."
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/addons/{addonId}/sso" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfAddonsAddonIdSso",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getSSOData",
+            "schema" : {
+              "$ref" : "#/definitions/Sso"
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/addons/{addonId}/tags" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfAddonsAddonIdTags",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getAddonTags",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/addons/{addonId}/tags/{tag}" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putSelfAddonsAddonIdTagsTag",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Body"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "addAddonTag"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfAddonsAddonIdTagsTag",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deleteAddonTag"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "tag",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfApplications",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplications",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Application"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postSelfApplications",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeApplication"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "addApplication"
+          }
+        }
+      }
+    },
+    "/self/applications/{appId}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfApplicationsAppId",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplication",
+            "schema" : {
+              "$ref" : "#/definitions/Application"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putSelfApplicationsAppId",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeApplication"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "editApplication"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfApplicationsAppId",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deleteApplication"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/addons" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfApplicationsAppIdAddons",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getAddonsLinkedToApplication",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Addon"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postSelfApplicationsAppIdAddons",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Body"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "linkAddonToApplication"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/addons/env" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfApplicationsAppIdAddonsEnv",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getEnvOfAddonsLinkedToApplication",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Env"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/addons/{addonId}" : {
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfApplicationsAppIdAddonsAddonId",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "unlinkAddonFromApplication"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/branch" : {
+      "put" : {
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/branches" : {
+      "get" : {
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/dependencies" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfApplicationsAppIdDependencies",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplicationDependencies",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Application"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/dependencies/{dependencyId}" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfApplicationsAppIdDependenciesDependencyId",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeApplication"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "addApplicationDependency"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfApplicationsAppIdDependenciesDependencyId",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deleteApplicationDependency"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "dependencyId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/dependents" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfApplicationsAppIdDependents",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplicationDependents",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Application"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/deployments" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfApplicationsAppIdDeployments",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "action",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplicationDeployments",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Deployment"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/deployments/{deploymentId}/instances" : {
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfApplicationsAppIdDeploymentsDeploymentIdInstances",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "cancelDeploy"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "deploymentId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/env" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfApplicationsAppIdEnv",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "editApplicationEnv",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ListEnv"
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putSelfApplicationsAppIdEnv",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeEnv"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "editApplicationEnvironment"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/env/{envName}" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putSelfApplicationsAppIdEnvEnvName",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeEnv"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "editApplicationEnv"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfApplicationsAppIdEnvEnvName",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "removeApplicationEnv"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "envName",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/exposed_env" : {
+      "get" : {
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      },
+      "put" : {
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/instances" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfApplicationsAppIdInstances",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplicationInstances",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Instance"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postSelfApplicationsAppIdInstances",
+        "parameters" : [ {
+          "name" : "commit",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "redeployApplication"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfApplicationsAppIdInstances",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "undeployApplication"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/tags" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfApplicationsAppIdTags",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplicationTags",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/tags/{tag}" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putSelfApplicationsAppIdTagsTag",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Body"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "addApplicationTag"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfApplicationsAppIdTagsTag",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deleteApplicationTag"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "tag",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/vhosts" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfApplicationsAppIdVhosts",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getVhosts",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Vhost"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/vhosts/favourite" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfApplicationsAppIdVhostsFavourite",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getFavouriteVhost",
+            "schema" : {
+              "$ref" : "#/definitions/Vhost"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putSelfApplicationsAppIdVhostsFavourite",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Vhost"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "markFavouriteVhost"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfApplicationsAppIdVhostsFavourite",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "unmarkFavouriteVhost"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/applications/{appId}/vhosts/{domain}" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putSelfApplicationsAppIdVhostsDomain",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Vhost"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "addVhost"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfApplicationsAppIdVhostsDomain",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "removeVhost"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "appId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      }, {
+        "name" : "domain",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/avatar" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putSelfAvatar",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Avatar"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "setUserAvatar\nsetUserAvatarFromSource"
+          }
+        }
+      }
+    },
+    "/self/change_password" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putSelfChangePassword",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "changeUserPassword",
+            "schema" : {
+              "$ref" : "#/definitions/Change Password"
+            }
+          }
+        }
+      }
+    },
+    "/self/confirmation_email" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfConfirmationEmail",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getConfirmationEmail"
+          }
+        }
+      }
+    },
+    "/self/consumers" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfConsumers",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getConsumers",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Consumer"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postSelfConsumers",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeConsumer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "createConsumer"
+          }
+        }
+      }
+    },
+    "/self/consumers/{key}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfConsumersKey",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getConsumer",
+            "schema" : {
+              "$ref" : "#/definitions/Consumer"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putSelfConsumersKey",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeConsumer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "PUT same consumer data as in POST."
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfConsumersKey",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deleteConsumer"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "key",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/consumers/{key}/secret" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfConsumersKeySecret",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getConsumerSecret",
+            "schema" : {
+              "$ref" : "#/definitions/Secret"
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "key",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/consumptions" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfConsumptions",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "appId",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "from",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "to",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "getConsumptions",
+            "schema" : {
+              "$ref" : "#/definitions/Conso"
+            }
+          }
+        }
+      }
+    },
+    "/self/credits" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfCredits",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getAmount",
+            "schema" : {
+              "$ref" : "#/definitions/Credits"
+            }
+          }
+        }
+      }
+    },
+    "/self/emails" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfEmails",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getEmailAddresses",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/self/emails/{email}" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putSelfEmailsEmail",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Body"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "addEmailAddress"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfEmailsEmail",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "removeEmailAddress"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "email",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/id" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfId",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getId",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/self/instances" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfInstances",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getInstancesForAllApps",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Instance"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/self/keys" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfKeys",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getSshKeys",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Key"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/self/keys/{key}" : {
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putSelfKeysKey",
+        "consumes" : [ ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Body"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "addSshKey"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfKeysKey",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "removeSshKey"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "key",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/mfa/{kind}" : {
+      "post" : {
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      },
+      "put" : {
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      },
+      "delete" : {
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "kind",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/mfa/{kind}/backupcodes" : {
+      "get" : {
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "kind",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/mfa/{kind}/confirmation" : {
+      "post" : {
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "kind",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/payment-info" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfPaymentInfo",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getPaymentInfo"
+          }
+        }
+      }
+    },
+    "/self/payments/billings" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfPaymentsBillings",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getInvoices"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postSelfPaymentsBillings",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "buyDrops"
+          }
+        }
+      }
+    },
+    "/self/payments/billings/{bid}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfPaymentsBillingsBid",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getInvoice"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putSelfPaymentsBillingsBid",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "choosePaymentProvider"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfPaymentsBillingsBid",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deletePurchaseOrder"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "bid",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/payments/billings/{bid}.pdf" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfPaymentsBillingsBidPdf",
+        "parameters" : [ {
+          "name" : "token",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "getPdfInvoice"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "bid",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/payments/fullprice/{price}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfPaymentsFullpricePrice",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "priceWithTax"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "price",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/payments/methods" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfPaymentsMethods",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getUserPaymentMethods"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postSelfPaymentsMethods",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "addUserMethod"
+          }
+        }
+      }
+    },
+    "/self/payments/methods/{mId}" : {
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfPaymentsMethodsMId",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deleteUserCard"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "mId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/payments/recurring" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfPaymentsRecurring",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getRecurrentPayment"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putSelfPaymentsRecurring",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "createRecurrentPayment"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfPaymentsRecurring",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "deleteRecurrentPayment"
+          }
+        }
+      }
+    },
+    "/self/tokens" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfTokens",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getSelfTokens",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Token"
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfTokens",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "revokeAllTokens"
+          }
+        }
+      }
+    },
+    "/self/tokens/{token}" : {
+      "delete" : {
+        "tags" : [ "Default" ],
+        "operationId" : "deleteSelfTokensToken",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "revokeToken"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "token",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/self/validate_email" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSelfValidateEmail",
+        "parameters" : [ {
+          "name" : "validationKey",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "validateEmail"
+          }
+        }
+      }
+    },
+    "/summary" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getSummary",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getSummary",
+            "schema" : {
+              "$ref" : "#/definitions/Summary"
+            }
+          }
+        }
+      }
+    },
+    "/users" : {
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postUsers",
+        "consumes" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "invitationKey",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "addonBetaInvitationKey",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "email",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "pass",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "url_next",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "terms",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/WannabeUser"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "createUser\ncreateUserFromForm"
+          }
+        }
+      }
+    },
+    "/users/{id}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getUsersId",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getUser",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/users/{id}/applications" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getUsersIdApplications",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplications",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Application"
+              }
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/users/{userId}/git-info" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getUsersUserIdGitInfo",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getGitInfo"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "userId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/vendor/apps" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getVendorApps",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "offset",
+          "in" : "query",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "listApps",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Application"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/vendor/apps/{addonId}" : {
+      "get" : {
+        "tags" : [ "Default" ],
+        "operationId" : "getVendorAppsAddonId",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "getApplicationInfo"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Default" ],
+        "operationId" : "putVendorAppsAddonId",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "editApplicationConfiguration"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "addonId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    },
+    "/vendor/billing/{ownerId}" : {
+      "post" : {
+        "tags" : [ "Default" ],
+        "operationId" : "postVendorBillingOwnerId",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "billOwner"
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "ownerId",
+        "in" : "path",
+        "required" : true,
+        "type" : "string"
+      } ]
+    }
+  },
+  "securityDefinitions" : {
+    "OAuthSecurity" : {
+      "type" : "oauth2",
+      "authorizationUrl" : "https://api.clever-cloud.com/authorize",
+      "tokenUrl" : "https://api.clever-cloud.com/oauth/access_token",
+      "flow" : "accessCode",
+      "scopes" : { }
+    }
+  },
+  "definitions" : {
+    "Addon" : {
+      "type" : "object",
+      "required" : [ "configKeys", "creationDate", "id", "name", "plan", "provider", "realId", "region" ],
+      "properties" : {
+        "configKeys" : {
+          "type" : "array",
+          "description" : "Environments variables link to the addon.",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "creationDate" : {
+          "type" : "string",
+          "format" : "date",
+          "description" : "The creation timestamp of the addon"
+        },
+        "id" : {
+          "type" : "string",
+          "description" : "`addon_${uuid}`"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "plan" : {
+          "$ref" : "#/definitions/Plan"
+        },
+        "provider" : {
+          "$ref" : "#/definitions/Provider"
+        },
+        "realId" : {
+          "type" : "string",
+          "description" : "`${provider}_${uuid2}`"
+        },
+        "region" : {
+          "type" : "string"
+        }
+      },
+      "description" : "An addon"
+    },
+    "AppInstance" : {
+      "type" : "object",
+      "properties" : {
+        "appId" : {
+          "type" : "string"
+        },
+        "appPort" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "commit" : {
+          "type" : "string"
+        },
+        "deployNumber" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "flavor" : {
+          "$ref" : "#/definitions/Flavor"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "ip" : {
+          "type" : "string"
+        },
+        "state" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Application" : {
+      "type" : "object",
+      "required" : [ "archived", "branch", "buildFlavor", "cancelOnPush", "commitId", "creationDate", "deployUrl", "deployment", "description", "favourite", "homogeneous", "id", "instance", "last_deploy", "name", "ownerId", "separateBuild", "state", "stickySessions", "vhosts", "webhookSecret", "webhookUrl", "zone" ],
+      "properties" : {
+        "archived" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "branch" : {
+          "type" : "string"
+        },
+        "buildFlavor" : {
+          "$ref" : "#/definitions/Flavor"
+        },
+        "cancelOnPush" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "commitId" : {
+          "type" : "string"
+        },
+        "creationDate" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "deployUrl" : {
+          "type" : "string"
+        },
+        "deployment" : {
+          "$ref" : "#/definitions/Deployment"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "favourite" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "homogeneous" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "instance" : {
+          "$ref" : "#/definitions/Instance"
+        },
+        "last_deploy" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "ownerId" : {
+          "type" : "string"
+        },
+        "separateBuild" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "state" : {
+          "type" : "string"
+        },
+        "stickySessions" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "vhosts" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Vhost"
+          }
+        },
+        "webhookSecret" : {
+          "type" : "string"
+        },
+        "webhookUrl" : {
+          "type" : "string"
+        },
+        "zone" : {
+          "type" : "string",
+          "description" : "`par` ou `mtl`"
+        }
+      }
+    },
+    "Avatar" : {
+      "type" : "object",
+      "required" : [ "source" ],
+      "properties" : {
+        "source" : {
+          "required" : [ "source", "value" ],
+          "type" : "object",
+          "description" : "",
+          "properties" : {
+            "source" : {
+              "type" : "string",
+              "description" : "github or gravatar"
+            },
+            "value" : {
+              "$ref" : "#/definitions/URL"
+            }
+          }
+        }
+      },
+      "description" : "If you want to upload an image from your computer, send the image in the body of the request without anything else."
+    },
+    "Body" : {
+      "type" : "object",
+      "required" : [ "body" ],
+      "properties" : {
+        "body" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Change Password" : {
+      "type" : "object",
+      "required" : [ "newPassword", "oldPassword" ],
+      "properties" : {
+        "newPassword" : {
+          "type" : "string"
+        },
+        "oldPassword" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Conso" : {
+      "type" : "object",
+      "required" : [ "appId", "conso" ],
+      "properties" : {
+        "appId" : {
+          "type" : "string"
+        },
+        "conso" : {
+          "required" : [ "conso", "date" ],
+          "type" : "object",
+          "properties" : {
+            "conso" : {
+              "type" : "string",
+              "description" : "One day consumption"
+            },
+            "date" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "Consumer" : {
+      "type" : "object",
+      "required" : [ "baseUrl", "description", "name", "rights", "url" ],
+      "properties" : {
+        "baseUrl" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "key" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "picture" : {
+          "type" : "string"
+        },
+        "rights" : {
+          "$ref" : "#/definitions/ConsumerRights"
+        },
+        "url" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ConsumerRights" : {
+      "type" : "object",
+      "properties" : {
+        "access_bills" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "access_consumption_statistics" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "access_credit_count" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "access_organisations" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "access_organisations_bills" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "access_organisations_consumption_statistics" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "access_organisations_credit_count" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "access_personal_information" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "almighty" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "manage_applications" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "manage_organisations" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "manage_organisations_applications" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "manage_organisations_members" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "manage_organisations_services" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "manage_personal_information" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "manage_services" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "manage_ssh_keys" : {
+          "type" : "boolean",
+          "default" : false
+        }
+      }
+    },
+    "Country" : {
+      "type" : "object",
+      "required" : [ "code", "name" ],
+      "properties" : {
+        "code" : {
+          "type" : "string",
+          "description" : "Code ISO 3166"
+        },
+        "name" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Credits" : {
+      "type" : "object",
+      "required" : [ "count", "dropPrice", "ownerId" ],
+      "properties" : {
+        "count" : {
+          "type" : "number",
+          "format" : "float"
+        },
+        "dropPrice" : {
+          "required" : [ "currency", "value" ],
+          "type" : "object",
+          "properties" : {
+            "currency" : {
+              "type" : "string"
+            },
+            "value" : {
+              "type" : "number",
+              "format" : "float"
+            }
+          }
+        },
+        "ownerId" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Deployment" : {
+      "type" : "object",
+      "required" : [ "repoState", "shutdownable", "type", "url" ],
+      "properties" : {
+        "httpUrl" : {
+          "type" : "string"
+        },
+        "repoState" : {
+          "type" : "string"
+        },
+        "shutdownable" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "url" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Env" : {
+      "type" : "object",
+      "required" : [ "addon_id", "addon_name", "env", "provider_id" ],
+      "properties" : {
+        "addon_id" : {
+          "type" : "string"
+        },
+        "addon_name" : {
+          "type" : "string"
+        },
+        "env" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/WannabeEnv"
+          }
+        },
+        "provider_id" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Feature" : {
+      "type" : "object",
+      "required" : [ "name", "type", "value" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "description" : "The name of the properties"
+        },
+        "type" : {
+          "type" : "string",
+          "description" : "The type of the feature"
+        },
+        "value" : {
+          "type" : "string",
+          "description" : "The value of the feature"
+        }
+      }
+    },
+    "Flavor" : {
+      "type" : "object",
+      "required" : [ "cpus", "mem", "name", "price" ],
+      "properties" : {
+        "available" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "cpus" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "disk" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "mem" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "microservice" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "nice" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "price" : {
+          "type" : "number",
+          "format" : "double"
+        }
+      }
+    },
+    "Instance" : {
+      "type" : "object",
+      "required" : [ "defaultEnv", "flavors", "instanceAndVersion", "maxAllowedInstances", "maxFlavor", "maxInstances", "minFlavor", "minInstances", "type", "variant", "version" ],
+      "properties" : {
+        "buildFlavor" : {
+          "$ref" : "#/definitions/Flavor"
+        },
+        "comingSoon" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "defaultEnv" : {
+          "$ref" : "#/definitions/Map"
+        },
+        "defaultFlavor" : {
+          "$ref" : "#/definitions/Flavor"
+        },
+        "deployments" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "enabled" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "flavors" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Flavor"
+          }
+        },
+        "instanceAndVersion" : {
+          "type" : "string"
+        },
+        "maxAllowedInstances" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "maxFlavor" : {
+          "$ref" : "#/definitions/Flavor"
+        },
+        "maxInstances" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "minFlavor" : {
+          "$ref" : "#/definitions/Flavor"
+        },
+        "minInstances" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "tags" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "variant" : {
+          "$ref" : "#/definitions/Variant"
+        },
+        "version" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Key" : {
+      "type" : "object",
+      "required" : [ "fingerprint", "key", "name" ],
+      "properties" : {
+        "fingerprint" : {
+          "type" : "string"
+        },
+        "key" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : ""
+        }
+      }
+    },
+    "ListEnv" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Map" : {
+      "type" : "object"
+    },
+    "Member" : {
+      "type" : "object",
+      "required" : [ "job", "member", "role" ],
+      "properties" : {
+        "job" : {
+          "type" : "string"
+        },
+        "member" : {
+          "required" : [ "email", "id" ],
+          "type" : "object",
+          "properties" : {
+            "avatar" : {
+              "type" : "string"
+            },
+            "email" : {
+              "type" : "string"
+            },
+            "id" : {
+              "type" : "string"
+            },
+            "name" : {
+              "type" : "string"
+            }
+          }
+        },
+        "role" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Organisation" : {
+      "type" : "object",
+      "required" : [ "VAT", "address", "avatar", "city", "company", "country", "description", "id", "name", "vatState", "zipcode" ],
+      "properties" : {
+        "VAT" : {
+          "type" : "string"
+        },
+        "address" : {
+          "type" : "string"
+        },
+        "avatar" : {
+          "type" : "string"
+        },
+        "city" : {
+          "type" : "string"
+        },
+        "company" : {
+          "type" : "string"
+        },
+        "country" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "vatState" : {
+          "type" : "string"
+        },
+        "zipcode" : {
+          "type" : "string"
+        },
+        "customerFullName" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Payment Provider" : {
+      "type" : "object",
+      "required" : [ "comingSoon", "imgUrl", "name", "title" ],
+      "properties" : {
+        "comingSoon" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "imgUrl" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "title" : {
+          "type" : "string"
+        }
+      }
+    },
+    "PaymentData" : {
+      "type" : "object",
+      "required" : [ "token", "type" ],
+      "properties" : {
+        "token" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Plan" : {
+      "type" : "object",
+      "required" : [ "features", "id", "name", "price", "slug" ],
+      "properties" : {
+        "features" : {
+          "type" : "array",
+          "description" : "The list of the feature in the addon",
+          "items" : {
+            "$ref" : "#/definitions/Feature"
+          }
+        },
+        "id" : {
+          "type" : "string",
+          "description" : "`plan_${uuid}`"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "Name of the pan"
+        },
+        "price" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "slug" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Provider" : {
+      "type" : "object",
+      "required" : [ "analyticsId", "canUpgrade", "googlePlusName", "id", "logoUrl", "longDesc", "name", "openInNewTab", "regions", "shortDesc", "status", "supportEmail", "twitterName", "website" ],
+      "properties" : {
+        "analyticsId" : {
+          "type" : "string",
+          "description" : "The id of the analytics page link to this addon"
+        },
+        "canUpgrade" : {
+          "type" : "boolean",
+          "description" : "Can the addon be upgraded",
+          "default" : false
+        },
+        "features" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Feature"
+          }
+        },
+        "googlePlusName" : {
+          "type" : "string",
+          "description" : "The name of the google + page link to this addon (could be empty)"
+        },
+        "id" : {
+          "type" : "string",
+          "description" : "The id of the provider"
+        },
+        "logoUrl" : {
+          "type" : "string",
+          "description" : "The url of the addon's logo"
+        },
+        "longDesc" : {
+          "type" : "string",
+          "description" : "A less concise description of the addon"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "openInNewTab" : {
+          "type" : "boolean",
+          "description" : "Does the addon panel need to be open in a new tab",
+          "default" : false
+        },
+        "plans" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Plan"
+          }
+        },
+        "regions" : {
+          "type" : "array",
+          "description" : "The differents regions where the addon is available",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "shortDesc" : {
+          "type" : "string",
+          "description" : "A short description of the addon"
+        },
+        "status" : {
+          "type" : "string",
+          "description" : "The status of this addon (RELEASE, BETA, ...)"
+        },
+        "supportEmail" : {
+          "type" : "string",
+          "description" : "The mail to contact in case of issue with this addon"
+        },
+        "twitterName" : {
+          "type" : "string",
+          "description" : "The name of the user to contact on twitter for this addon (could be empty)"
+        },
+        "website" : {
+          "type" : "string",
+          "description" : "The website of the provider. If the addon is developped by clever-cloud, the site is \"http://www.clever-cloud.com/\""
+        }
+      },
+      "description" : "A provider"
+    },
+    "Rights" : {
+      "type" : "object",
+      "required" : [ "description", "name" ],
+      "properties" : {
+        "description" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Secret" : {
+      "type" : "object",
+      "required" : [ "secret", "value" ],
+      "properties" : {
+        "secret" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Sso" : {
+      "type" : "object",
+      "required" : [ "email", "id", "nav-data", "timestamp", "token", "url" ],
+      "properties" : {
+        "email" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "nav-data" : {
+          "type" : "string"
+        },
+        "timestamp" : {
+          "type" : "string",
+          "format" : "date"
+        },
+        "token" : {
+          "type" : "string"
+        },
+        "url" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Summary" : {
+      "type" : "object",
+      "required" : [ "organisations", "user" ],
+      "properties" : {
+        "organisations" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "properties" : {
+              "addons" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "properties" : {
+                    "id" : {
+                      "type" : "string"
+                    },
+                    "logoUrl" : {
+                      "type" : "string"
+                    },
+                    "name" : {
+                      "type" : "string"
+                    },
+                    "providerId" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              },
+              "applications" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "properties" : {
+                    "archived" : {
+                      "type" : "boolean",
+                      "default" : false
+                    },
+                    "commit" : {
+                      "type" : "string"
+                    },
+                    "id" : {
+                      "type" : "string"
+                    },
+                    "instanceType" : {
+                      "type" : "string"
+                    },
+                    "instanceVariant" : {
+                      "type" : "string"
+                    },
+                    "name" : {
+                      "type" : "string"
+                    },
+                    "state" : {
+                      "type" : "string"
+                    },
+                    "variantSlug" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              },
+              "avatar" : {
+                "type" : "string"
+              },
+              "consumers" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "object",
+                  "properties" : {
+                    "key" : {
+                      "type" : "string"
+                    },
+                    "name" : {
+                      "type" : "string"
+                    },
+                    "picture" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              },
+              "id" : {
+                "type" : "string"
+              },
+              "name" : {
+                "type" : "string"
+              },
+              "providers" : {
+                "type" : "array",
+                "items" : {
+                  "type" : "string"
+                }
+              },
+              "role" : {
+                "type" : "string"
+              }
+            }
+          }
+        },
+        "user" : {
+          "required" : [ "addons", "admin", "applications", "avatar", "id", "lang", "name" ],
+          "type" : "object",
+          "properties" : {
+            "addons" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "string"
+                  },
+                  "logoUrl" : {
+                    "type" : "string"
+                  },
+                  "name" : {
+                    "type" : "string"
+                  },
+                  "providerId" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            },
+            "admin" : {
+              "type" : "boolean",
+              "default" : false
+            },
+            "applications" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "archived" : {
+                    "type" : "boolean",
+                    "default" : false
+                  },
+                  "commit" : {
+                    "type" : "string"
+                  },
+                  "id" : {
+                    "type" : "string"
+                  },
+                  "instanceType" : {
+                    "type" : "string"
+                  },
+                  "instanceVariant" : {
+                    "type" : "string"
+                  },
+                  "name" : {
+                    "type" : "string"
+                  },
+                  "state" : {
+                    "type" : "string"
+                  },
+                  "variantSlug" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            },
+            "avatar" : {
+              "type" : "string"
+            },
+            "consumers" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "key" : {
+                    "type" : "string"
+                  },
+                  "name" : {
+                    "type" : "string"
+                  },
+                  "picture" : {
+                    "type" : "string"
+                  }
+                }
+              }
+            },
+            "id" : {
+              "type" : "string"
+            },
+            "lang" : {
+              "type" : "string"
+            },
+            "name" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "Token" : {
+      "type" : "object",
+      "required" : [ "consumer", "creationDate", "lastUtilisation", "rights", "token" ],
+      "properties" : {
+        "consumer" : {
+          "$ref" : "#/definitions/Consumer"
+        },
+        "creationDate" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "lastUtilisation" : {
+          "type" : "string"
+        },
+        "rights" : {
+          "$ref" : "#/definitions/Rights"
+        },
+        "token" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Transaction Id" : {
+      "type" : "object",
+      "required" : [ "transactionId" ],
+      "properties" : {
+        "transactionId" : {
+          "type" : "string",
+          "description" : "The transaction Id"
+        }
+      },
+      "description" : "A simple transaction id"
+    },
+    "URL" : {
+      "type" : "object",
+      "required" : [ "url" ],
+      "properties" : {
+        "url" : {
+          "type" : "string"
+        }
+      },
+      "description" : "Must be a valid HTTP URL"
+    },
+    "User" : {
+      "type" : "object",
+      "required" : [ "address", "admin", "avatar", "canPay", "city", "country", "creationDate", "email", "emailValidated", "id", "lang", "name", "oauthApps", "phone", "zipcode" ],
+      "properties" : {
+        "address" : {
+          "type" : "string",
+          "description" : "The address of the user"
+        },
+        "admin" : {
+          "type" : "boolean",
+          "description" : "Is the user an administrator ?",
+          "default" : false
+        },
+        "avatar" : {
+          "type" : "string",
+          "description" : "The location of the user's avatar"
+        },
+        "canPay" : {
+          "type" : "boolean",
+          "description" : "Does the user can pay ?",
+          "default" : false
+        },
+        "city" : {
+          "type" : "string",
+          "description" : "The city of the user"
+        },
+        "country" : {
+          "type" : "string",
+          "description" : "The country of the user"
+        },
+        "creationDate" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "The creation timestamp of the user"
+        },
+        "email" : {
+          "type" : "string",
+          "description" : "The email of the user"
+        },
+        "emailValidated" : {
+          "type" : "boolean",
+          "description" : "Does the user email is validate",
+          "default" : false
+        },
+        "hasPassword" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "id" : {
+          "type" : "string",
+          "description" : "The id of the user : `user_${uuid}`"
+        },
+        "lang" : {
+          "type" : "string",
+          "description" : "The lang of the user"
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "The name of the user"
+        },
+        "oauthApps" : {
+          "type" : "array",
+          "description" : "The list of token oauth",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "phone" : {
+          "type" : "string",
+          "description" : "The phone of the user"
+        },
+        "preferredMFA" : {
+          "type" : "string"
+        },
+        "zipcode" : {
+          "type" : "string",
+          "description" : "The zipcode of the user"
+        }
+      },
+      "description" : "A user representation"
+    },
+    "Variant" : {
+      "type" : "object",
+      "required" : [ "deployType", "id", "logo", "name", "slug" ],
+      "properties" : {
+        "deployType" : {
+          "type" : "string"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "logo" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "slug" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Vhost" : {
+      "type" : "object",
+      "required" : [ "fqdn" ],
+      "properties" : {
+        "fqdn" : {
+          "type" : "string"
+        }
+      }
+    },
+    "WannabeAddon" : {
+      "type" : "object",
+      "required" : [ "name", "payment", "plan", "providerId", "region" ],
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "payment" : {
+          "$ref" : "#/definitions/PaymentData"
+        },
+        "plan" : {
+          "type" : "string"
+        },
+        "providerId" : {
+          "type" : "string",
+          "description" : ""
+        },
+        "region" : {
+          "type" : "string"
+        }
+      }
+    },
+    "WannabeAddonProvider" : {
+      "type" : "object",
+      "required" : [ "api", "id", "name" ],
+      "properties" : {
+        "api" : {
+          "$ref" : "#/definitions/WannabeAddonProviderAPI"
+        },
+        "id" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        }
+      }
+    },
+    "WannabeAddonProviderAPI" : {
+      "type" : "object",
+      "required" : [ "config_vars", "password", "sso_salt" ],
+      "properties" : {
+        "config_vars" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "password" : {
+          "type" : "string"
+        },
+        "production" : {
+          "$ref" : "#/definitions/WannabeAddonProviderAPIUrl"
+        },
+        "regions" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "sso_salt" : {
+          "type" : "string"
+        },
+        "test" : {
+          "$ref" : "#/definitions/WannabeAddonProviderAPIUrl"
+        }
+      }
+    },
+    "WannabeAddonProviderAPIUrl" : {
+      "type" : "object",
+      "required" : [ "base_url", "sso_url" ],
+      "properties" : {
+        "base_url" : {
+          "type" : "string"
+        },
+        "sso_url" : {
+          "type" : "string"
+        }
+      }
+    },
+    "WannabeApplication" : {
+      "type" : "object",
+      "required" : [ "deploy", "enabled", "instance", "maxInstances", "minInstances", "name", "zone" ],
+      "properties" : {
+        "archived" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "cancelOnPush" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "deploy" : {
+          "type" : "string"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "enabled" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "favourite" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "homogeneous" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "instance" : {
+          "$ref" : "#/definitions/Instance"
+        },
+        "maxFlavor" : {
+          "$ref" : "#/definitions/Flavor"
+        },
+        "maxInstances" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "minFlavor" : {
+          "$ref" : "#/definitions/Flavor"
+        },
+        "minInstances" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "oauthApp" : {
+          "$ref" : "#/definitions/WannabeOauthApp"
+        },
+        "oauthAppId" : {
+          "type" : "string"
+        },
+        "oauthService" : {
+          "type" : "string"
+        },
+        "separateBuild" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "shutdownable" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "stickySessions" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "tags" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "zone" : {
+          "type" : "string"
+        }
+      }
+    },
+    "WannabeConsumer" : {
+      "type" : "object",
+      "required" : [ "baseUrl", "name", "rights", "url" ],
+      "properties" : {
+        "baseUrl" : {
+          "$ref" : "#/definitions/URL"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "picture" : {
+          "type" : "string",
+          "description" : ""
+        },
+        "rights" : {
+          "required" : [ "activated", "right" ],
+          "type" : "object",
+          "properties" : {
+            "activated" : {
+              "type" : "boolean",
+              "default" : false
+            },
+            "right" : {
+              "type" : "string"
+            }
+          }
+        },
+        "url" : {
+          "$ref" : "#/definitions/URL"
+        }
+      }
+    },
+    "WannabeEnv" : {
+      "type" : "object",
+      "required" : [ "name", "value" ],
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      }
+    },
+    "WannabeFeature" : {
+      "type" : "object",
+      "required" : [ "name", "type" ],
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string",
+          "description" : "BOOLEAN, INTERVAL, FILESIZE, NUMBER, PERCENTAGE"
+        }
+      }
+    },
+    "WannabeMember" : {
+      "type" : "object",
+      "required" : [ "email", "role" ],
+      "properties" : {
+        "email" : {
+          "type" : "string"
+        },
+        "job" : {
+          "type" : "string"
+        },
+        "role" : {
+          "type" : "string"
+        }
+      }
+    },
+    "WannabeOauthApp" : {
+      "type" : "object",
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "owner" : {
+          "type" : "string"
+        }
+      }
+    },
+    "WannabeOrganisation" : {
+      "type" : "object",
+      "required" : [ "description", "name" ],
+      "properties" : {
+        "VAT" : {
+          "type" : "string"
+        },
+        "address" : {
+          "type" : "string",
+          "description" : "The address of the organisation."
+        },
+        "city" : {
+          "type" : "string",
+          "description" : "The city of the organisation."
+        },
+        "company" : {
+          "type" : "string",
+          "description" : "The company's name of the organisation."
+        },
+        "country" : {
+          "type" : "string",
+          "description" : "The country of the organisation."
+        },
+        "description" : {
+          "type" : "string",
+          "description" : "The description of the organisation."
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "The name of the organisation."
+        },
+        "zipcode" : {
+          "type" : "string",
+          "description" : "The zipcode of the city's organisation."
+        }
+      }
+    },
+    "WannabePlan" : {
+      "type" : "object",
+      "required" : [ "features", "name", "price", "slug" ],
+      "properties" : {
+        "features" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/WannabePlanFeature"
+          }
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "price" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "slug" : {
+          "type" : "string"
+        }
+      }
+    },
+    "WannabePlanFeature" : {
+      "type" : "object",
+      "required" : [ "name", "type", "value" ],
+      "properties" : {
+        "name" : {
+          "type" : "string"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      }
+    },
+    "WannabeUser" : {
+      "type" : "object",
+      "required" : [ "email", "password", "terms" ],
+      "properties" : {
+        "address" : {
+          "type" : "string"
+        },
+        "city" : {
+          "type" : "string"
+        },
+        "country" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string",
+          "description" : ""
+        },
+        "lang" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        },
+        "phone" : {
+          "type" : "string"
+        },
+        "terms" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "zipcode" : {
+          "type" : "string"
+        }
+      },
+      "description" : ""
+    },
+    "Zone" : {
+      "type" : "object",
+      "required" : [ "correspondingRegion", "internal", "name" ],
+      "properties" : {
+        "correspondingRegion" : {
+          "type" : "string"
+        },
+        "internal" : {
+          "type" : "boolean",
+          "default" : false
+        },
+        "name" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
