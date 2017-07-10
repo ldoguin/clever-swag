@@ -23,19 +23,21 @@ if [ ! -d "${APP_DIR}" ]; then
   APP_DIR=`dirname "$SCRIPT"`/..
   APP_DIR=`cd "${APP_DIR}"; pwd`
 fi
-wget http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.2.2/swagger-codegen-cli-2.2.2.jar -O swagger-codegen-cli.jar
+
 executable="./swagger-codegen-cli.jar"
+
 
 if [ ! -f "$executable" ]
 then
-  mvn clean package
+  wget http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.2.2/swagger-codegen-cli-2.2.2.jar -O swagger-codegen-cli.jar
 fi
 
 # if you've executed sbt assembly previously it will use that instead.
 export JAVA_OPTS="${JAVA_OPTS} -XX:MaxPermSize=256M -Xmx1024M -DloggerPath=conf/log4j.properties"
-ags="$@ generate -i swagger.json -l java -c config.json -o api_client --library=jersey2 -DhideGenerationTimestamp=true"
+agsJava="$@ generate -i swagger.json -l java -c config.json -o api_client --library=jersey2 -DhideGenerationTimestamp=true"
+agsHtml="$@ generate -i swagger.json -l html2 -o html_site"
 
-java $JAVA_OPTS -jar $executable $ags
+java $JAVA_OPTS -jar $executable $agsJava
 
 # copy files for OAuth1
 
@@ -51,3 +53,6 @@ echo >> api_client/src/main/java/io/swagger/client/ApiClient.java
 cat $TMP_FILE >> api_client/src/main/java/io/swagger/client/ApiClient.java
 rm $TMP_FILE
 sed -i   186i"   \<dependency\>\n      \<groupId\>org.glassfish.jersey.security\</groupId\>\n      \<artifactId\>oauth1-client\</artifactId\>\n      \<version\>\$\{jersey-version\}\</version\>\n   \</dependency\>"  api_client/pom.xml
+
+java $JAVA_OPTS -jar $executable $agsHtml
+
