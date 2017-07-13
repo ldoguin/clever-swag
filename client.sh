@@ -36,10 +36,13 @@ fi
 export JAVA_OPTS="${JAVA_OPTS} -XX:MaxPermSize=256M -Xmx1024M -DloggerPath=conf/log4j.properties"
 agsJava="$@ generate -i swagger.json -l java -c config.json -o api_client --library=jersey2 -DhideGenerationTimestamp=true"
 agsHtml="$@ generate -i swagger.json -l html2 -o html_site"
-
+agsJS="$@ generate \
+-i swagger.json -l javascript \
+-o clever-cloud-javascript-api \
+--additional-properties usePromises=true"
 java $JAVA_OPTS -jar $executable $agsJava
 
-# copy files for OAuth1
+# Generate Java Client
 
 TMP_FILE=".tmp.$$"
 
@@ -54,5 +57,19 @@ cat $TMP_FILE >> api_client/src/main/java/io/swagger/client/ApiClient.java
 rm $TMP_FILE
 sed -i   186i"   \<dependency\>\n      \<groupId\>org.glassfish.jersey.security\</groupId\>\n      \<artifactId\>oauth1-client\</artifactId\>\n      \<version\>\$\{jersey-version\}\</version\>\n   \</dependency\>"  api_client/pom.xml
 
+# Generate HTML Static site
 java $JAVA_OPTS -jar $executable $agsHtml
 
+# Generate JS client
+java $JAVA_OPTS -jar $executable $agsJS
+
+TMP_FILE=".tmp.$$"
+cat clever-cloud-javascript-api/src/ApiClient.js | head -n $((`cat clever-cloud-javascript-api/src/ApiClient.js | wc -l`-3)) | sed "s/auth.accessToken/auth.token/" | sed "s/'Bearer ' + auth.token/exports.prototype.getHMACAuthorization(request.method, request.url, {}, auth)/" > $TMP_FILE
+cat files/ApiClient.js >> $TMP_FILE && cat $TMP_FILE > clever-cloud-javascript-api/src/ApiClient.js
+rm -rf $TMP_FILE
+
+cd clever-cloud-javascript-api
+yarn add --save lodash crypto oauth-sign superagent
+
+# FIX doc
+sed -i 's/OAuthSecurity.accessToken = .*\;/OAuthSecurity.consumerKey = YOUR CONSUMER KEY\nOAuthSecurity.consumerSecret = YOUR CONSUMER SECRET\nOAuthSecurity.token = YOUR TOKEN\nOAuthSecurity.tokenSecret = YOUR TOKEN SECRET/' docs/DefaultApi.md
